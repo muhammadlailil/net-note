@@ -11,6 +11,7 @@ export default function Detail() {
      const { uuid } = router.query
      const [search, setSearch] = useState('');
      const [open, setOpen] = useState(false);
+     const [loading, setLoading] = useState(false);
      const [edited, setEdited] = useState<any>(null);
      const [id, setId] = useState<any>(null);
 
@@ -18,9 +19,11 @@ export default function Detail() {
      const fetchProjects = useCallback(
           async () => {
                if (uuid) {
+                    setLoading(true)
                     const project: any = await new Api('/api/projects/detail').get({
                          uuid: uuid
                     });
+                    setLoading(false)
                     setProject(project)
                }
           },
@@ -73,7 +76,7 @@ export default function Detail() {
                     </p>
                     <input
                          type="text"
-                         onKeyUp={(e) => { if (e.key == 'Enter') setSearch(e.target.value) }}
+                         onKeyUp={(e:any) => { if (e.key == 'Enter') setSearch(e.target.value)}}
                          placeholder="Search note name ..."
                          className="border w-full focus:outline-primary py-4 px-6 text-sm rounded-full bg-[#F9F9F9] mt-7"
                     />
@@ -120,11 +123,11 @@ export default function Detail() {
                          search={search}
                     />
 
-               </> : <>
+               </> : (!loading)?<>
                     <h1 className="font-inter-bold text-black text-sub-heading text-center">
                          404 Not Found
                     </h1>
-               </>}
+               </>:<></>}
           </Layout>
      )
 }

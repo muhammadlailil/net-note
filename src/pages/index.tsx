@@ -95,7 +95,7 @@ export default function Home() {
                 </p>
                 <input
                     type="text"
-                    onKeyUp={(e)=>{  if(e.key=='Enter') setSearch(e.target.value) }}
+                    onKeyUp={(e:any)=>{  if(e.key=='Enter') setSearch(e.target.value) }}
                     placeholder="Search client name, project name, company..."
                     className="border w-full focus:outline-primary py-4 px-6 text-sm rounded-full bg-[#F9F9F9] mt-7"
                 />
