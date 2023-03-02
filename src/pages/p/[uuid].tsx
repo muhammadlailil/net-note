@@ -50,7 +50,7 @@ export default function Detail() {
 
      return (
           <Layout
-               title="Detail"
+               title={project?.title || 'Detail' }
                createNew={() => togglePopup()}
           >
                {(project) ? <>
