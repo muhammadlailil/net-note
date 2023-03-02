@@ -1,9 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-/src/database/
+*/database/
 
 # dependencies
-*.sqllite
 
 /node_modules
 /.pnp
@@ -40,3 +39,7 @@ yarn-error.log*
 next-env.d.ts
 
 
+
+
+*.sqllite
+src/database/projects.sqllite
