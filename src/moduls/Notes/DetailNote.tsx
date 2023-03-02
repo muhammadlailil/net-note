@@ -41,7 +41,7 @@ export default function DetailNote(props: props) {
                               <div className="fixed inset-0 overflow-y-auto">
                                    <div className="flex min-h-full items-center justify-center p-4">
                                         <Dialog.Panel
-                                             className="mb-6 bg-white overflow-hidden rounded-lg shadow-xl transform transition-all w-1/4 sm:w-full sm:max-w-lg "
+                                             className="mb-6 bg-white overflow-hidden rounded-lg shadow-xl transform transition-all w-full sm:w-1/4 md:w-full  sm:max-w-lg "
                                         >
                                              <>
                                                   <div className="px-4 pt-5 pb-4 sm:p-6 sm:pb-4 ">
