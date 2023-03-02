@@ -104,7 +104,7 @@ export default function Home() {
                         <div className="shadow-card border bg-white rounded-2xl group relative" key={row.id}>
                             <Link href={`/p/${row.uuid}`} className="px-5 py-6 block rounded-2xl">
                                 <p className="font-inter-bold text-black text-description">{row.title}</p>
-                                <span className="text-caption text-dark-grey break-words">📅 {new DateTime(row.created_at).indo()}</span>
+                                <span className="text-caption text-dark-grey break-words block whitespace-nowrap overflow-hidden text-ellipsis">📑 {row.description}</span>
                             </Link>
                             <div className="hidden group-hover:block">
                                 <Dropdown>

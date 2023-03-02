@@ -1,6 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+/src/database/
+
 # dependencies
+*.sqllite
+
 /node_modules
 /.pnp
 .pnp.js
@@ -34,3 +38,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+

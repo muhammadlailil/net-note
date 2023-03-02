@@ -10,7 +10,7 @@ export default async function handler(
      const DB = new Database().project()
      const result = await DB.table('projects').where(function (q) {
           q.where('title', 'like', `%${search || ''}%`)
-               .where('description', 'like', `%${search || ''}%`)
+               .orWhere('description', 'like', `%${search || ''}%`)
      }).orderBy('id', 'desc');
 
      return new Response(res).data(result)

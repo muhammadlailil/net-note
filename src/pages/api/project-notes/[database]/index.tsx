@@ -14,7 +14,7 @@ export default async function handler(
                result = await DB.table('project_notes').where('tag', category)
                     .where(function (q:any) {
                          q.where('title', 'like', `%${search || ''}%`)
-                              .where('description', 'like', `%${search || ''}%`)
+                              .orWhere('description', 'like', `%${search || ''}%`)
                     })
                     .orderBy('id', 'desc')
           }
