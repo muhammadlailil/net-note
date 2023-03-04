@@ -31,4 +31,11 @@ export default class String {
           }
           return str;
      }
+     
+     base64encode(string:string){
+          return window.btoa(string)
+     }
+     base64decode(string:string){
+          return window.atob(string)
+     }
 }

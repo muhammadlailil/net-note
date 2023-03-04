@@ -43,3 +43,5 @@ next-env.d.ts
 
 *.sqllite
 src/database/projects.sqllite
+
+.env
