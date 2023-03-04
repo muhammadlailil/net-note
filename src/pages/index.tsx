@@ -1,4 +1,5 @@
 import Auth from "@/libs/Auth";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react"
 
@@ -10,13 +11,13 @@ export default function Index() {
     })
     const [disable, setDisable] = useState(true)
 
-    useEffect(()=>{
+    useEffect(() => {
         if (form.username && form.password) {
             setDisable(false)
         } else {
             setDisable(true)
         }
-    },[form])
+    }, [form])
     const handleFormChange = (event: any) => {
         const { name, value } = event.target;
         setForm({
@@ -36,6 +37,9 @@ export default function Index() {
 
     return (
         <>
+            <Head>
+                <title>Project Note</title>
+            </Head>
             <div className="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
 
                 <div className="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
