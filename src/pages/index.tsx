@@ -1,6 +1,6 @@
 import Auth from "@/libs/Auth";
 import { useRouter } from "next/router";
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function Index() {
     const router = useRouter()
@@ -8,38 +8,44 @@ export default function Index() {
         username: '',
         password: ''
     })
-    const [disable,setDisable] = useState(true)
+    const [disable, setDisable] = useState(true)
 
+    useEffect(()=>{
+        if (form.username && form.password) {
+            setDisable(false)
+        } else {
+            setDisable(true)
+        }
+    },[form])
     const handleFormChange = (event: any) => {
         const { name, value } = event.target;
         setForm({
             ...form,
             [name]: value,
         });
-        if(form.username && form.password){
-            setDisable(false)
-        }else{
-            setDisable(true)
-        }
     };
 
     const login = async (e: any) => {
         e.preventDefault()
-        if(new Auth().login(form)){
+        if (new Auth().login(form)) {
             router.push('/project')
-        }else{
+        } else {
             alert('Wrong way')
         }
     }
-    
+
     return (
         <>
             <div className="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
 
                 <div className="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-                    <form method="POST" onSubmit={(e)=>login(e)}>
-                        <div className="text-center">
-                            <h1 className="text-sub-heading font-inter-bold mb-3">Welcome</h1>
+                    <form method="POST" onSubmit={(e) => login(e)}>
+                        <div className="text-center mb-5">
+                            <h1 className="text-sub-heading font-inter-bold mb-2">Welcome</h1>
+                            <p className="text-caption">
+                                Hello there! Thank you for trying the experimental of “project note”.
+                                Please, contact <a href="https://t.me/alvathoni" className="text-primary underline" target="_blank">@alvathoni</a> to get access.
+                            </p>
                         </div>
                         <div className="flex flex-col mb-5">
                             <label htmlFor="" className="text-caption text-dark-grey">Username</label>
@@ -60,7 +66,7 @@ export default function Index() {
                             />
                         </div>
                         <button type="submit"
-                        disabled={disable}
+                            disabled={disable}
                             className="w-full justify-center disabled:bg-gray-400 disabled:cursor-not-allowed rounded-md bg-primary px-4 py-2 text-base font-medium text-white mt-5 shadow-sm">
                             Login
                         </button>
